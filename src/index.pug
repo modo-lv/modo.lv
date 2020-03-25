@@ -1,0 +1,156 @@
+doctype html
+
+include ./index-helpers
+
+html
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		title MoDo.lv
+
+		link(rel="stylesheet" href="style.css")
+		link(rel="stylesheet" href="ie-fix.css")
+
+		link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700")
+
+		script(src="libs/jquery/jquery-3.2.1.min.js")
+		script(src="libs/js.storage.min.js")
+
+		script(src="index.js")
+
+		// Analytics
+		script
+			| (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			| (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			| m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			| })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			|      ga('create', 'UA-10706075-1', 'auto');
+			| ga('send', 'pageview');
+
+	body
+		each lang in ["en","lv"]
+			section.content(lang=lang, class=lang=="en" ? "" : "hidden")
+				header
+					.intro-and-contacts
+						.intro
+							h1 MoDo.lv
+							+p(lang, "header-text")
+						.contacts
+							+header-contact-column(lang, "header-contacts-professional", [
+								{
+									"title": "LinkedIn",
+									"url": "https://www.linkedin.com/in/martinsosis",
+									"image": "linked-in.png"
+								},
+							])
+
+							+header-contact-column(lang, "header-contacts-email", [
+								{"title": "email", "click": "sea()", "image": "email.png"}
+							])
+
+							+header-contact-column(lang, "header-contacts-personal", [
+								{"title": "Twitter", "url": "https://twitter.com/modo_lv", "image": "twitter.png"},
+								{"title": "Facebook", "url": "https://www.facebook.com/modo.lv", "image": "facebook.png"},
+							])
+						.money
+							.column
+								.contact-card
+									.title: +p(lang, "money")
+									+money-table(lang, [
+										{
+											"title": "Swedbank",
+											"text": "LV80HABA0551005403902",
+											"image": "swedbank.png"
+										},
+										{
+											"title": "Citadele",
+											"text": "LV72PARX0003803430001",
+											"image": "citadele.png"
+										},
+										{
+											"title": "PayPal",
+											"url": "https://paypal.me/MartinsOsis",
+											"image": "paypal.png"
+										},
+										{
+											"title": "Bitcoin",
+											"text": "16nEFip9QkWuzBVckPVq5NwbCA43uH9Eea",
+											"image": "bitcoin.png"
+										},
+										{
+											"title": "Litecoin",
+											"text": "LRmHo9gh4ZqdDmVaRw75jE88tSj3vVzVA3",
+											"image": "litecoin.png"
+										},
+										{
+											"title": "Monero",
+											"text": "49jMPmLtptKDDPmUbi2t4mTBo3UfiBbkwFHaEtRdRRvKdQs2skDpgsSLDuoRuKZPrecpWEszt5oAEV7tukN8extYS5jpy4z",
+											"image": "monero.png"
+										}
+									])
+
+					ul.language-switch
+						for name, key in {"lv": "Latviski", "en": "In English"}
+							li
+								a(data-lang=key) #{name}
+
+				main
+					+main-panel(lang, "software", [
+						{
+							"url": "//blog.modo.lv/projects/latvian-keyboard",
+							"icon": "keyboard.png",
+							"title": "project-lv-keyboard"
+						},
+						{
+							"url": "//blog.modo.lv/projects/french-keyboard",
+							"icon": "keyboard.png",
+							"title": "project-fr-keyboard"
+						},
+					], [
+						{"url": "https://github.com/modo-lv", "icon": "github.png", "title": "GitHub"},
+						{
+							"url": "http://stackoverflow.com/users/1970582/modus-operandi",
+							"icon": "stack-overflow.png",
+							"title": "StackOverflow"
+						}
+					])
+
+					+main-panel(lang, "gaming", [
+						{
+							"url": "http://smartguides.info/raw-text/alan_wake_achievement_a.txt",
+							"icon": "text-document.png",
+							"title": "Alan Wake achievement walkthrough"
+						},
+						{
+							"url": "//blog.modo.lv/projects/final-fantasy-ii-anniversary-maps",
+							"icon": "final-fantasy.png",
+							"title": "Final Fantasy II Anniversary maps"
+						},
+						{
+							"url": "//blog.modo.lv/projects/sony-psp-themes",
+							"icon": "psp.png",
+							"title": "Fallout theme for Sony PSP"
+						},
+						{
+							"url": "//blog.modo.lv/projects/sony-psp-wallpapers",
+							"icon": "psp.png",
+							"title": "Wallpaper for Sony PSP"
+						}
+
+					], [
+						{"url": "http://steamcommunity.com/id/modo_lv/", "icon": "steam.png", "title": "Steam"},
+						{"url": "http://raptr.com/modo_lv/about", "icon": "raptr.png", "title": "Raptr"},
+						{
+							"url": "http://psnprofiles.com/modo_lv",
+							"icon": "psn.png",
+							"title": "PlayStation Network"
+						}
+					])
+
+				footer
+					+p(lang, 'footer-text')
+					.badges
+						a(href="https://html5.validator.nu/?doc=http%3A%2F%2Fmodo.lv" title="Valid HTML5")
+							img(src="content/footer-icons/valid-html5.png" alt="Valid HTML5")
+						a(href="https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fmodo.lv%2Fstyle.css" title="Valid CSS3")
+							img(src="content/footer-icons/valid-css3.png" alt="Valid CSS3")

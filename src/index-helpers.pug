@@ -1,0 +1,56 @@
+- var i18n = {}
+
+include ./content/i18n/en
+include ./content/i18n/lv
+
+- function text(lang, key) { return i18n[lang][key] || key }
+
+mixin p(lang, key)
+	p(lang=lang)
+		| #{text(lang, key)}
+
+mixin header-contact-column(lang, title, contacts)
+	.column
+		.contact-card
+			if title
+				.title: +p(lang, title)
+			ul
+				for contact in contacts
+					li(title=text(lang, contact.title))
+						a(
+							href=contact.url
+							onclick=contact.click
+						)
+							img(
+								alt=text(lang, contact.title)
+								src='content/header-icons/' + contact.image
+							)
+
+
+mixin main-panel(lang, title, projects, profiles)
+	.panel
+		if title
+			.title: +p(lang, title)
+		ul
+			for project in projects
+				li: a(href=project.url title=text(lang, project.title))
+					img(src="content/project-icons/" + project.icon alt=text(lang, project.title) class="icon")
+					+p(lang, project.title)
+		if profiles
+			.heading.profiles
+				+p(lang, "profiles")
+			ul.profiles
+				for profile in profiles
+					li: a(href=profile.url title=text(lang, profile.title))
+						img(src="content/profile-icons/" + profile.icon alt=text(lang, profile.title) class="icon")
+
+
+mixin money-table(lang, rows)
+	.money-table.closed
+		for row in rows
+			.cell
+				img(src="content/money-icons/" + row.image, title=row.title)
+				if row.url != null
+					a(href=row.url) #{row.url}
+				else
+					span #{row.text}

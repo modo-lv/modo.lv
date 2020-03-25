@@ -1,0 +1,21 @@
+$border-color: #bbb
+$border: 1px solid $border-color
+$border-radius: 0.75em
+$title-bg: #f5f5f5
+$content-bg: #fff
+$spacing: 0.5em
+$warning-bg: #fcf8e3
+$warning-border: 1px solid #faebcc
+$info-bg: #d9edf7
+$info-border: 1px solid #bce8f1
+$box-shadow: 2px 2px 6px gray
+$wrap-width: 540px
+$content-width: 600px
+
+@mixin border($shadow: false)
+	border: $border
+	border-radius: $border-radius
+	@if $shadow == true
+		box-shadow: $box-shadow
+
+

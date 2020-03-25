@@ -1,0 +1,50 @@
+//@import url(//fonts.googleapis.com/css?family=Ubuntu:400,700)
+
+body
+	font-family: 'Ubuntu', sans-serif
+	//font-family: 'Merriweather', serif
+	background: url('content/main-bg.png')
+	background-color: #F1F1F1
+
+a
+	cursor: pointer
+	color: mediumblue
+	text-decoration: none
+
+	&:hover
+		text-decoration: underline
+
+	img
+		// Good old IE
+		border: 0
+
+
+.info
+	background: $info-bg
+	border: $info-border
+
+.warning
+	background: $warning-bg
+	border: $warning-border
+
+.hidden, .ng-hide
+	display: none !important
+
+.invisible
+	visibility: hidden
+
+.multi-lang
+	[lang]:not(.ng-hide) + [lang]:not(.ng-hide)
+		margin-top: $spacing * 2
+
+p
+	margin: 0
+
+img.icon
+	height: 48px
+	width: 48px
+	flex-shrink: 0
+
+ul
+	margin: 0
+	padding: 0
