@@ -28,6 +28,10 @@ function sea() {
 $(() => {
 	let storage = Storages.localStorage;
 	let newLang = storage.get("lang");
+	if (window.location.search == "?lv")
+		newLang = "lv"
+	else if (window.location.search == "?en")
+		newLang = "en"
 	languageSwitch(newLang);
 
 	$(".language-switch a").click((e) => {
