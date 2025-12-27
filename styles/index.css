@@ -28,7 +28,7 @@ main {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
 
-    section {
+    div {
         flex-grow: 1;
         display: flex;
         justify-content: space-between;

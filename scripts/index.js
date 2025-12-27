@@ -15,8 +15,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     document
         .querySelector("h1")
-        .insertAdjacentElement("afterend", document.createElement("section").also(section =>
-            section.appendChild(swedbank))
+        .insertAdjacentElement("afterend", document.createElement("div").also(div =>
+            div.appendChild(swedbank))
         )
         .insertAdjacentElement("afterend", document.createElement("hr"))
 
