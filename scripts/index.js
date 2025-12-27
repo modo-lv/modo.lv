@@ -7,10 +7,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!new URLSearchParams(window.location.search).has("money"))
         return
 
+    let iban = "LV80HABA0551005403902"
     let swedbank =
         document.createElement("a").also((a) => {
             a.setAttribute("href", "#")
-            a.innerText = "LV80HABA0551005403902"
+            a.innerText = iban
         })
 
     document
@@ -21,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
         .insertAdjacentElement("afterend", document.createElement("hr"))
 
     let popup = tippy(swedbank, {
-        content: "IBAN → 📋️",
+        content: `${iban} → 📋️`,
         trigger: "manual",
         onShow(instance) {
             setTimeout(() => {
@@ -30,10 +31,8 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
     swedbank.addEventListener("click", async (event) => {
-        let iban = event.currentTarget.text
         try {
             await navigator.clipboard.writeText(iban)
-            popup.setContent(`${iban} → 📋️️`)
             popup.show()
         } catch (error) {
             console.error(error.message)
